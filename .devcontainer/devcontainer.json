@@ -27,7 +27,8 @@
     "mounts": [
 		"source=${localWorkspaceFolder}/k3sConfig/kube,target=/home/vscode/.kube,type=bind",
 		// "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
-		"source=${localWorkspaceFolder}/.devcontainer/wireguard/wg0.conf,target=/etc/wireguard/wg0.conf,type=bind"
+		"source=${localWorkspaceFolder}/.devcontainer/wireguard/wg0.conf,target=/etc/wireguard/wg0.conf,type=bind",
+		"source=${localWorkspaceFolder}/.devcontainer/ssh,target=/home/vscode/.ssh,type=bind"
 
 	  ],
 "runArgs": [

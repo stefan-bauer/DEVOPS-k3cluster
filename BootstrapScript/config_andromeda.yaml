@@ -1,0 +1,10 @@
+tls-san:
+    - app.wildelements.net
+    - 194.59.206.147
+    - 10.0.0.61
+flannel-backend: wireguard-native
+flannel-iface: wg0
+node-ip: 10.0.0.2
+node-external-ip: 194.59.206.147
+advertise-address: 10.0.0.2
+cluster-init: true
