@@ -1,0 +1,37 @@
+Host Orion
+  User orionadmin
+  HostName 152.53.33.0
+  IdentityFile ~/.ssh/id_rsa_mcair_orion
+
+
+Host Andromeda
+  User andromedaadmin
+  HostName 194.59.206.147
+  IdentityFile ~/.ssh/id_rsa_mcair_k3cluster
+
+Host Pegasus
+  User pegasusadmin
+  HostName 92.60.37.157
+  IdentityFile ~/.ssh/id_rsa_mcair_k3cluster
+
+Host Lyra
+  User lyraadmin
+  HostName 85.235.66.252
+  IdentityFile ~/.ssh/id_rsa_mcair_k3cluster
+
+
+
+Host AndromedaLok
+  User andromedaadmin
+  HostName 10.0.0.11
+  IdentityFile ~/.ssh/id_rsa_mcair_k3cluster
+
+Host PegasusLok
+  User pegasusadmin
+  HostName 10.0.0.12
+  IdentityFile ~/.ssh/id_rsa_mcair_k3cluster
+
+Host LyraLok
+  User lyraadmin
+  HostName 10.0.0.13
+  IdentityFile ~/.ssh/id_rsa_mcair_k3cluster

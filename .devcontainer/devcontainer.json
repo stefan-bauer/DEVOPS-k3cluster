@@ -1,0 +1,40 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "my-dev-container",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// "image": "mcr.microsoft.com/devcontainers/base:noble",
+	"build": {
+		"dockerfile": "Dockerfile"
+	  },
+	"features": {
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		"ghcr.io/devcontainers-extra/features/wireguard-apt-get:1": {}
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "sudo wg-quick up wg0",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+    "mounts": [
+		"source=${localWorkspaceFolder}/k3sConfig/kube,target=/home/vscode/.kube,type=bind",
+		// "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
+		"source=${localWorkspaceFolder}/.devcontainer/wireguard/wg0.conf,target=/etc/wireguard/wg0.conf,type=bind"
+
+	  ],
+"runArgs": [
+    "--cap-add=NET_ADMIN",
+    "--cap-add=SYS_MODULE",
+    "--device=/dev/net/tun"
+]
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
