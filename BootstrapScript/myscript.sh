@@ -4,7 +4,7 @@
 set -e
 
 # Install WireGuard
-apt update && apt install -y wireguard vim jq
+apt update && apt install -y wireguard vim jq iptables curl 
 
 # Define directories and files
 WG_DIR="/etc/wireguard"

@@ -1,0 +1,10 @@
+token: K10f473a5229c87d35fffebe97c5ecc3eb2d1b59ac63b26876c99c307975669a0cf::server:c060b74a094c5d72c99705c92d411d39
+tls-san:
+    - app.wildelements.net
+    - 92.60.37.157
+server: https://194.59.206.147:6443
+flannel-backend: wireguard-native
+flannel-iface: wg0
+node-ip: 10.0.0.3
+node-external-ip: 92.60.37.157
+advertise-address: 10.0.0.3

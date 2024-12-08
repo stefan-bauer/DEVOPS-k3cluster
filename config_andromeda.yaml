@@ -1,0 +1,52 @@
+tls-san:
+    - app.wildelements.net
+    - 194.59.206.147
+flannel-backend: wireguard-native
+flannel-iface: wg0
+node-ip: 10.0.0.2
+node-external-ip: 194.59.206.147
+advertise-address: 10.0.0.2
+cluster-init: true
+
+
+
+curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_START=true sh -s - 
+
+--node-external-ip {SERVER_EXTERNAL_IP} 
+--advertise-address {SERVER_EXTERNAL_IP} 
+--node-ip 192.168.1.1 --flannel-iface wg0
+
+
+k3sup install \
+  --ip 10.0.0.2 \
+  --user andromedaadmin \
+  --cluster \
+  --ssh-key $HOME/.ssh/id_rsa_mcair_k3cluster \
+  --local-path $HOME/.kube/config \
+  --k3s-extra-args "--tls-san app.wildelements.net --tls-san 194.59.206.147 --flannel-backend wireguard-native --flannel-iface wg0 --node-ip 10.0.0.2 --node-external-ip 194.59.206.147 --advertise-address 10.0.0.2"
+
+
+
+
+k3sup join \
+--server \
+--ip 10.0.0.3 \
+--user pegasusadmin \
+--server-ip 10.0.0.2 \
+--server-user andromedaadmin \
+--k3s-channel latest \
+--k3s-extra-args "--tls-san app.wildelements.net --tls-san 92.60.37.157 --flannel-backend wireguard-native --flannel-iface wg0 --node-ip 10.0.0.3 --node-external-ip 92.60.37.157 --advertise-address 10.0.0.3" \
+--ssh-key $HOME/.ssh/id_rsa_mcair_k3cluster 
+
+
+---------------
+k3sup install \
+--cluster \
+--ip 10.0.0.2 \
+--k3s-channel latest \
+--tls-san 10.0.0.1 \
+--k3s-extra-args "--disable servicelb --disable traefik --node-ip 10.0.0.2 --node-external-ip 194.59.206.147 --tls-san 10.0.0.1" \
+--local-path $HOME/.kube/config \
+--ssh-key $HOME/.ssh/id_rsa_mcair_k3cluster \
+--user andromedaadmin \
+--merge
